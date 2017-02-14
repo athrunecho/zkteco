@@ -1,8 +1,6 @@
 package zkteco
 
 import (
-	"fmt"
-
 	"github.com/garyburd/redigo/redis"
 )
 
@@ -22,13 +20,14 @@ type AbnormalRecord struct {
 }
 
 func (k *Kaoqin) UpdateAttendances(f string) (err error) {
-
+	return nil
 }
 
 func (k *Kaoqin) UpdateArrangements(f string) (err error) {
-
+	return nil
 }
 
 func (k *Kaoqin) GetAbnormalRecords(name, beginDate, endDate string) (records []AbnormalRecord, err error) {
+	return []AbnormalRecord{}, nil
 
 }
