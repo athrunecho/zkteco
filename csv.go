@@ -1,14 +1,17 @@
 package zkteco
 
 import (
+	"encoding/csv"
 	"os"
 )
 
-func GetCSVRecords(f string) (records [][]string, err error) {
-	f, err = os.Open(f)
+func GetCSVRecords(file string) (records [][]string, err error) {
+	var f *os.File
+
+	f, err = os.Open(file)
 	if err != nil {
 		debugPrintf("os.Open() err: %v\n", err)
-		return
+		return [][]string{}, err
 	}
 	defer f.Close()
 
@@ -16,6 +19,7 @@ func GetCSVRecords(f string) (records [][]string, err error) {
 	records, err = r.ReadAll()
 	if err != nil {
 		debugPrintf("GetCSVRecords error: %v\n", err)
-		return err
+		return [][]string{}, err
 	}
+	return records, nil
 }

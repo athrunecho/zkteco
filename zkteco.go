@@ -19,11 +19,15 @@ type AbnormalRecord struct {
 	Category           string
 }
 
-func (k *Kaoqin) UpdateAttendances(f string) (err error) {
+func (k *Kaoqin) UpdateAttendances(records [][]string) (err error) {
+
+	//k.c.Do(HSET key field value)
 	return nil
 }
 
-func (k *Kaoqin) UpdateArrangements(f string) (err error) {
+func (k *Kaoqin) UpdateArrangements(records [][]string) (err error) {
+
+	//k.c.Do(HSET key field value)
 	return nil
 }
 
