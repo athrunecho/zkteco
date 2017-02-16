@@ -7,17 +7,16 @@ import (
 	"github.com/northbright/pathhelper"
 )
 
-var (
-	err error
-	p   string
-)
-
 const (
 	kaoqingFilePath = "./csv/Attendance/Attendance.csv"
 )
 
 func main() {
-	var records = [][]string{}
+	var (
+		records = [][]string{}
+		err     error
+		p       string
+	)
 
 	if p, err = pathhelper.GetAbsPath(kaoqingFilePath); err != nil {
 		fmt.Printf("GetAbsPatherr:%v\n", err)
