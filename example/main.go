@@ -13,7 +13,7 @@ var (
 )
 
 const (
-	kaoqingFilePath = "./in/kaoqing.csv"
+	kaoqingFilePath = "./csv/Attendance/Attendance.csv"
 )
 
 func main() {
