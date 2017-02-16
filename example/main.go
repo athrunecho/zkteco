@@ -24,7 +24,7 @@ func main() {
 	}
 
 	if records, err = zkteco.GetCSVRecords(p); err != nil {
-		fmt.Printf("records:%v\n, err:%v\n", records, err)
-
+		fmt.Printf("records:%v\n", records)
+		return
 	}
 }
