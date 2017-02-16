@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	kaoqingFilePath = "./csv/Attendance/Attendance.csv"
+	kaoqingFilePath = "./csv/attendance/attendance.csv"
 )
 
 func main() {
