@@ -5,10 +5,10 @@ import (
 	"os"
 )
 
-func GetCSVRecords(file string) (records [][]string, err error) {
+func GetCSVRecords(name string) (records [][]string, err error) {
 	var f *os.File
 
-	f, err = os.Open(file)
+	f, err = os.Open(name)
 	if err != nil {
 		debugPrintf("os.Open() err: %v\n", err)
 		return [][]string{}, err
