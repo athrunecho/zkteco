@@ -7,10 +7,9 @@ import (
 	"time"
 )
 
-func GetField(d string, i int) (date string) {
+func GetField(date string) (after string) {
 	var (
 		year, month, day int64
-		field            string
 		err              error
 		datePattern      = `^(\d{4}).(\d*).(\d*)$`
 	)
@@ -33,6 +32,6 @@ func GetField(d string, i int) (date string) {
 	n := t.Unix()
 	n = n + (24 * 60 * 60)
 	t = time.Unix(n, 0)
-	date = fmt.Sprintf("%v\n", t)
-	return date
+	after = fmt.Sprintf("%v\n", t)
+	return after
 }
