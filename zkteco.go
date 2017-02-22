@@ -1,6 +1,7 @@
 package zkteco
 
 import (
+	"fmt"
 	"io"
 	"regexp"
 	//"strconv"
@@ -23,7 +24,16 @@ type AbnormalRecord struct {
 	Category           string
 }
 
-// Update Attendances Records To Redis field := fmt.Printf("%v-%02d", re.FindStringSubmatch(date[2]), k)
+func NewKaoqin(redisAddr, redisPassword string) (k *Kaoqin, err error) {
+	k = &Kaoqin{redisAddr: redisAddr, redisPassword: redisPassword}
+	if k.c, err = GetRedisConn(k.redisAddr, k.redisPassword); err != nil {
+		debugPrintf("GetRedisConn err:%v\n", err)
+		return &Kaoqin{}, err
+	}
+	return k, nil
+}
+
+// Update Attendances Records To Redis
 func (k *Kaoqin) UpdateAttendances(r io.Reader) (err error) {
 	var (
 		d           string
@@ -32,27 +42,31 @@ func (k *Kaoqin) UpdateAttendances(r io.Reader) (err error) {
 	)
 
 	if records, err = GetCSVRecords(r); err != nil {
-		debugPrintf("GetCSVRecordserr:%v\n", err)
+		debugPrintf("GetCSVRecords err:%v\n", err)
 		return
 	}
 	//key
 	l := len(records)
+	columnNum := len(records[0])
+	t := GetStartDate(records[2][2])
+
 	for i := 4; i <= l-1; i += 2 {
-		column := records[i]
-		maxcolumn := records[0]
-		for j := 1; j <= len(maxcolumn); j++ {
-			d = GetField(records[2][2])
+		columns := records[i]
+		for j := 0; j <= columnNum-1; j++ {
+			d = GetField(t, j)
 			row := records[i+1]
+			fmt.Printf("row[%v]: %v\n", j, row[j])
 			if row[j] != "" {
 				re := regexp.MustCompile(timePattern)
 				v := re.FindString(row[j])
-				k.c.Do("HSET", column[10], d, v)
-			} else {
-				continue
+				fmt.Printf("field: %v\n, value %v\n", d, v)
+				if _, err = k.c.Do("HSET", columns[10], d, v); err != nil {
+					debugPrintf("k.c.Do err:%v\n", err)
+				}
 			}
 		}
 	}
-	return nil
+	return
 }
 
 func (k *Kaoqin) UpdateArrangements(records [][]string) (err error) {
