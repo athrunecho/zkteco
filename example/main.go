@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	kaoqingFilePath = "./csv/attendance/attendance.csv"
+	kaoqinFilePath = "./csv/attendance/attendance.csv"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 		f   *os.File
 	)
 
-	if p, err = pathhelper.GetAbsPath(kaoqingFilePath); err != nil {
+	if p, err = pathhelper.GetAbsPath(kaoqinFilePath); err != nil {
 		fmt.Printf("GetAbsPatherr:%v\n", err)
 		return
 
