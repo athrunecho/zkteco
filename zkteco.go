@@ -1,7 +1,7 @@
 package zkteco
 
 import (
-	"fmt"
+	//"fmt"
 	"io"
 	"regexp"
 	//"strconv"
@@ -55,11 +55,9 @@ func (k *Kaoqin) UpdateAttendances(r io.Reader) (err error) {
 		for j := 0; j <= columnNum-1; j++ {
 			d = GetField(t, j)
 			row := records[i+1]
-			fmt.Printf("row[%v]: %v\n", j, row[j])
 			if row[j] != "" {
 				re := regexp.MustCompile(timePattern)
 				v := re.FindString(row[j])
-				fmt.Printf("field: %v\n, value %v\n", d, v)
 				if _, err = k.c.Do("HSET", columns[10], d, v); err != nil {
 					debugPrintf("k.c.Do err:%v\n", err)
 				}
