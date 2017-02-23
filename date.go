@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// GetStartDate returns start time of attendance by given a time range.
 func GetStartDate(timeRange string) (t time.Time) {
 	var (
 		loc              *time.Location
@@ -35,6 +36,7 @@ func GetStartDate(timeRange string) (t time.Time) {
 
 }
 
+// GetField adds days and returns according to i.
 func GetField(t time.Time, i int) (field string) {
 	n := t.AddDate(0, 0, i)
 	a, b, c := n.Date()

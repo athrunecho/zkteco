@@ -14,8 +14,7 @@ const (
 
 func main() {
 	var (
-		k *zkteco.Kaoqin
-		//	records = [][]string{}
+		k   *zkteco.Kaoqin
 		err error
 		p   string
 		f   *os.File
@@ -40,6 +39,5 @@ func main() {
 		fmt.Printf("GetCSVRecordserr:%v\n", err)
 		return
 	}
-	//fmt.Printf("%v\n", records)
 
 }
