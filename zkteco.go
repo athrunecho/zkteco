@@ -35,7 +35,7 @@ func (k *Kaoqin) UpdateAttendances(r io.Reader) (err error) {
 		records     = [][]string{}
 	)
 
-	//  records gets the file that GetCSVRecords returned.
+	//  records gets the crude csv file that GetCSVRecords returned.
 	if records, err = GetCSVRecords(r); err != nil {
 		debugPrintf("GetCSVRecords err:%v\n", err)
 		return
