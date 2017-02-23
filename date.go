@@ -31,19 +31,13 @@ func GetStartDate(timeRange string) (t time.Time) {
 	loc, err = time.LoadLocation("Local")
 
 	t = time.Date(int(year), time.Month(month), int(day), 0, 0, 0, 0, loc)
-	fmt.Printf("GetStartDate timeRange: %v, t:%v\n", timeRange, t)
 	return t
 
 }
 
 func GetField(t time.Time, i int) (field string) {
-	fmt.Printf("GetField t:%v, i:%v\n", t, i)
-	n := t.Unix()
-
-	n = n + int64(i)*(24*60*60)
-	t = time.Unix(n, 0)
-	fmt.Printf("t: %v\n", t)
-	a, b, c := t.Date()
+	n := t.AddDate(0, 0, i)
+	a, b, c := n.Date()
 	field = fmt.Sprintf("%v-%v-%v", a, int(b), c)
 	return field
 }
