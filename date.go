@@ -29,7 +29,10 @@ func GetStartDate(timeRange string) (t time.Time) {
 	if day, err = strconv.ParseInt(arr[3], 10, 32); err != nil {
 		return
 	}
-	loc, err = time.LoadLocation("Local")
+
+	if loc, err = time.LoadLocation("Local"); err != nil {
+		return
+	}
 
 	t = time.Date(int(year), time.Month(month), int(day), 0, 0, 0, 0, loc)
 	return t
