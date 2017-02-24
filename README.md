@@ -1,5 +1,8 @@
 # zkteco
 
+[![Build Status](https://travis-ci.org/athrunecho/zkteco.svg?branch=master)](https://travis-ci.org/athrunecho/zkteco)
+
+
 package zkteco parses the output files from zkteco device KQ803 and update to redis.It's based on Redigo.
 
 #### How to use zkteco
