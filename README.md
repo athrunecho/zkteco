@@ -1,6 +1,11 @@
 # zkteco
 
-package zkteco parses the output files from zkteco device and gets abnormal attendance records.
+package zkteco parses the output files from zkteco device.
+
+
+
+#### Documentation
+* [API Reference](http://godoc.org/github.com/athrunecho/zkteco)
 
 #### License
 * [MIT License](./LICENSE) 
