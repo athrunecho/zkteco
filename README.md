@@ -1,7 +1,7 @@
 # zkteco
 
 [![Build Status](https://travis-ci.org/athrunecho/zkteco.svg?branch=master)](https://travis-ci.org/athrunecho/zkteco)
-
+[![Go Report Card](https://goreportcard.com/badge/github.com/athrunecho/zkteco)](https://goreportcard.com/report/github.com/athrunecho/zkteco)
 
 package zkteco parses the output files from zkteco device KQ803 and update to redis.It's based on Redigo.
 
