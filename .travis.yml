@@ -8,7 +8,8 @@ go:
   - 1.8  
   - tip
 
+before_install:
+  - ./install-and-run-redis.sh
 
 script:
-  
   -  go test -c && ./zkteco.test
