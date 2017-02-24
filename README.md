@@ -1,6 +1,6 @@
 # zkteco
 
-package zkteco parses the output files from zkteco device.
+package zkteco parses the output files from zkteco device KQ803 and update to redis.It's based on Redigo.
 
 #### Installation
 
