@@ -39,5 +39,6 @@ func main() {
 		fmt.Printf("GetCSVRecordserr:%v\n", err)
 		return
 	}
+	defer k.Close()
 
 }
