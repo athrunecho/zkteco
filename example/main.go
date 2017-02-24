@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/athrunecho/zkteco"
+	"github.com/garyburd/redigo/redis"
 	"github.com/northbright/pathhelper"
 )
 
@@ -14,6 +15,8 @@ const (
 
 func main() {
 	var (
+		c   redis.Conn
+		arr []string
 		k   *zkteco.Kaoqin
 		err error
 		p   string
@@ -40,5 +43,11 @@ func main() {
 		return
 	}
 	defer k.Close()
-
+	c, _ = redis.Dial("tcp", ":6379")
+	// key pattern as like "kaoqin:Name"
+	if arr, err = redis.Strings(c.Do("HGETALL", "kaoqin:ben")); err != nil {
+		fmt.Printf("redis.Strings err:%v\n", err)
+		return
+	}
+	fmt.Printf("%v\n", arr)
 }
