@@ -2,7 +2,7 @@
 
 package zkteco parses the output files from zkteco device KQ803 and update to redis.It's based on Redigo.
 
-#### Get absolute path of given relative path.
+#### Get absolute path of given relative path.Please import "github.com/athrunecho/zkteco" before use the function.
 
         if p, err = pathhelper.GetAbsPath(kaoqinFilePath); err != nil {
 		    fmt.Printf("GetAbsPatherr:%v\n", err)
