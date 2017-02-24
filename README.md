@@ -18,7 +18,7 @@ package zkteco parses the output files from zkteco device KQ803 and update to re
 
 #### NewKaoqin returns an pointer to Kaoqin by given Redis address, Redis password. 
 
-        if k, err = zkteco.NewKaoqin(":6379", ""); err != nil {
+        if k, err = zkteco.NewKaoqin(":XXXX", ""); err != nil {
 		fmt.Printf("zkteco.NewKaoqin err: %v\n", err)
 	    return
         }
