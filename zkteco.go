@@ -1,6 +1,7 @@
 package zkteco
 
 import (
+	"fmt"
 	"io"
 	"regexp"
 
@@ -15,6 +16,11 @@ type Kaoqin struct {
 	redisPassword string
 	// c is Redis connection
 	c redis.Conn
+}
+
+// Close close the redis connection from Kaoqin struct
+func (k *Kaoqin) Close() error {
+	return k.c.Close()
 }
 
 // NewKaoqin returns an pointer to Kaoqin by given Redis address, Redis password.
@@ -52,7 +58,8 @@ func (k *Kaoqin) UpdateAttendances(r io.Reader) (err error) {
 			if row[j] != "" {
 				re := regexp.MustCompile(timePattern)
 				value := re.FindString(row[j])
-				if _, err = k.c.Do("HSET", columns[10], field, value); err != nil {
+				keyname := fmt.Sprintf("kaoqin:%v", columns[10])
+				if _, err = k.c.Do("HSET", keyname, field, value); err != nil {
 					debugPrintf("k.c.Do err:%v\n", err)
 				}
 			}
