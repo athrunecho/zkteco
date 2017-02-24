@@ -33,7 +33,7 @@ func NewKaoqin(redisAddr, redisPassword string) (k *Kaoqin, err error) {
 	return k, nil
 }
 
-// Update attendances records to redis.
+// UpdateAttendances updates attendances records to redis.
 func (k *Kaoqin) UpdateAttendances(r io.Reader) (err error) {
 	var (
 		field       string
