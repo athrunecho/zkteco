@@ -2,29 +2,24 @@
 
 package zkteco parses the output files from zkteco device KQ803 and update to redis.It's based on Redigo.
 
-#### Get absolute path of given relative path.Please import "github.com/athrunecho/zkteco" before use the function.
+#### How to use zkteco
 
-        if p, err = pathhelper.GetAbsPath(kaoqinFilePath); err != nil {
-		    fmt.Printf("GetAbsPatherr:%v\n", err)
-            return
-        }
+* Open opens the named file for reading. If successful, methods on the returned file can be used for reading
 
-#### Open opens the named file for reading. If successful, methods on the returned file can be used for reading
-
-        if f, err = os.Open(p); err != nil {
+        if f, err = os.Open("/home/xx/1.csv"); err != nil {
 		    fmt.Printf("os.Open err: %v\n", err)
 	        return
         } 
 
-#### NewKaoqin returns an pointer to Kaoqin by given Redis address, Redis password. 
+* NewKaoqin returns an pointer to Kaoqin by given Redis address, Redis password. 
 
-        if k, err = zkteco.NewKaoqin(":XXXX", ""); err != nil {
+        if k, err = zkteco.NewKaoqin(":6379", ""); err != nil {
 		    fmt.Printf("zkteco.NewKaoqin err: %v\n", err)
 	        return
         }
 
 
-#### Update attendances records(*File) to redis..
+* Update attendances records(*File) to redis..
 
         if err = k.UpdateAttendances(f); err != nil {
           	fmt.Printf("UpdateAttendances err:%v\n", err)
