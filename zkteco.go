@@ -62,6 +62,8 @@ func (k *Kaoqin) UpdateAttendances(r io.Reader) (err error) {
 				if _, err = k.c.Do("HSET", keyname, field, value); err != nil {
 					debugPrintf("k.c.Do err:%v\n", err)
 				}
+				return
+
 			}
 		}
 	}
