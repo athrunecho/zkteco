@@ -5,15 +5,15 @@ package zkteco parses the output files from zkteco device KQ803 and update to re
 #### Get absolute path of given relative path.
 
         if p, err = pathhelper.GetAbsPath(kaoqinFilePath); err != nil {
-		fmt.Printf("GetAbsPatherr:%v\n", err)
+		    fmt.Printf("GetAbsPatherr:%v\n", err)
             return
         }
 
 #### Open opens the named file for reading. If successful, methods on the returned file can be used for reading
 
         if f, err = os.Open(p); err != nil {
-		fmt.Printf("os.Open err: %v\n", err)
-	    return
+		    fmt.Printf("os.Open err: %v\n", err)
+	        return
         } 
 
 #### NewKaoqin returns an pointer to Kaoqin by given Redis address, Redis password. 
